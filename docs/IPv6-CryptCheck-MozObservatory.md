@@ -64,9 +64,10 @@ Copy the contents of the [Production Guide](https://github.com/tootsuite/documen
 
 Then change the following:
 - `ssl_ciphers EECDH+AESGCM:EECDH+AES;` -> `ssl_ciphers "AES256+EECDH:AES256+EDH";`
-- add `add_header Content-Security-Policy "default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self' data:; connect-src 'self' wss://mastodon.michaeljdeeb.com; font-src 'self'; frame-ancestors 'none'; media-src 'self'";` above `add_header Strict-Transport-Security "max-age=31536000";` **and change the wss:// URL**
+- add `add_header Content-Security-Policy "default-src 'none'; style-src 'self'
+unsafe-inline'; script-src 'self'; img-src 'self' data:; connect-src 'self' wss://mastodon.michaeljdeeb.com; font-src 'self'; frame-ancestors 'none'; media-src 'self'";` above `add_header Strict-Transport-Security "max-age=31536000";` **and change the wss:// URL**
 
-The Content-Security-Policy is the only reason I was getting a B from Observatory, simply because I didn't have one. I found [this thred](https://mastodon.al/users/Spike/updates/27) and used [this reply](https://social.papill0n.org/users/lu/updates/6) to get to that CSP header. It is currently giving me errors, but isn't majorly breaking anything. You may need to tweak it to suit your server better.
+The Content-Security-Policy is the only reason I was getting a B from Observatory, simply because I didn't have one. I found [this thred](https://mastodon.al/users/Spike/updates/27) and used [this reply](https://social.papill0n.org/users/lu/updates/6) to get to that CSP header. `style-src 'unsafe-inline'` was added to remove errors.
 
 ## Nginx.conf
 
