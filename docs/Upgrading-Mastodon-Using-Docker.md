@@ -6,9 +6,9 @@ Upgrading Mastodon Using Docker
 This guide will cover how to update a Docker instance although some parts of this guide may be similar for non-Docker users.
 
 1. Update tag references for ~/production with `git fetch --tags`
-2. Find out what the latest tagged release is called. You can do this by going to [Mastodon's GitHub Releases](https://github.com/tootsuite/mastodon/releases) or check via command line by running the below snippet after step 1. **NOTE: The backticks are intentional**
+2. Find out what the latest tagged release is called. You can do this by going to [Mastodon's GitHub Releases](https://github.com/tootsuite/mastodon/releases) or check via command line by running the below snippet after step 1.
 ```
-git describe --tags \`git rev-list --tags --max-count=1\`
+git tag | tail -n 1
 ```
 3. Pull down the new release using `git checkout [release-number]` where `[release-number]` is what the latest release is tagged as without including the square brackets (ex. `v1.2.2`).
 
