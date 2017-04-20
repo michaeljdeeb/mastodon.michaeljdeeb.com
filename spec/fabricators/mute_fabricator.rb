@@ -1,3 +1,0 @@
-Fabricator(:mute) do
-
-end
